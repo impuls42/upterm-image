@@ -6,8 +6,14 @@ if [[ ! -f ~/.ssh/id_ed25519 ]]; then
 	# ssh-keyscan uptermd.upterm.dev >/etc/ssh/ssh_known_hosts
 fi
 
-upterm host \
-	--accept \
-	--authorized-keys="${UPTERM_AUTHORIZED_KEYS}" \
-	--github-user="${UPTERM_GITHUB_USER}" \
-	$@
+UPTERM_ARGS=(--accept)
+
+if [[ -n "${UPTERM_AUTHORIZED_KEYS:-}" ]]; then
+	UPTERM_ARGS+=(--authorized-keys="${UPTERM_AUTHORIZED_KEYS}")
+fi
+
+if [[ -n "${UPTERM_GITHUB_USER:-}" ]]; then
+	UPTERM_ARGS+=(--github-user="${UPTERM_GITHUB_USER}")
+fi
+
+upterm host "${UPTERM_ARGS[@]}" "$@"
