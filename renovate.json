@@ -10,7 +10,7 @@
         "^compose\\.yaml$"
       ],
       "matchStrings": [
-        "UPTERM_VERSION[=:]\\s*[\"']?refs/tags/(?<currentValue>v[0-9.]+)[\"']?"
+        "UPTERM_VERSION[=:]\\s*[\"']?refs/tags/(?<currentValue>v[0-9]+(?:\\.[0-9]+)*)[\"']?"
       ],
       "depNameTemplate": "owenthereal/upterm",
       "datasourceTemplate": "github-releases",
