@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "^Dockerfile$",
+        "^compose\\.yaml$"
+      ],
+      "matchStrings": [
+        "UPTERM_VERSION[=:]\\s*[\"']?refs/tags/(?<currentValue>v[0-9]+(?:\\.[0-9]+)*)[\"']?"
+      ],
+      "depNameTemplate": "owenthereal/upterm",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver",
+      "extractVersionTemplate": "^v(?<version>.*)$"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": ["github-releases"],
+      "matchPackageNames": ["owenthereal/upterm"],
+      "groupName": "upterm",
+      "commitMessageTopic": "upterm",
+      "commitMessageExtra": "to {{newVersion}}",
+      "semanticCommits": "enabled",
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "deps"
+    }
+  ]
+}
