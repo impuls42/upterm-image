@@ -1,0 +1,11 @@
+services:
+  upterm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UPTERM_VERSION: "refs/tags/v0.20.0"
+    container_name: upterm
+    environment:
+      - UPTERM_GITHUB_USER=your_github_username_here
+
