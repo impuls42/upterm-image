@@ -1,5 +1,5 @@
 FROM alpine:latest AS builder
-ARG UPTERM_VERSION=refs/tags/v0.20.0
+ARG UPTERM_VERSION=refs/tags/v0.22.0
 
 RUN apk add bash git make go
 
